@@ -1,5 +1,5 @@
-const client = new Discord.Client(); 
-const Discord = require('discord.js');
+var Discord = require('discord.js');
+var client = new Discord.Client();
 const premium = ['399353508429824000']
 const prefix = ('#');
 /////////////////////////////////////////////////////////////////////////////// الترحيب الست ولكم 
