@@ -544,11 +544,7 @@ client.on('message', message => {
     }
     });
 //////////////////////////////////////
-  function lol() {
-    client.guilds.get('510953747019595776').roles.find("name", "vip bot").setColor("RANDOM");
-  };
-  setInterval(lol, 1000);
-});
+ 
 ///////////////////////////////
 
         
