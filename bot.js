@@ -552,7 +552,7 @@ client.on('message', message => {
   setInterval(lol, 1000);
 });
 ///////////////////////////////
-if.on("message", message => {
+
             if(!message.channel.guild) return;
             var prefix = "r.";
         if(message.content.startsWith(prefix + 'invites')) {
