@@ -264,7 +264,7 @@ __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
 ⚙ r.mute ----- ⚙ اعطاء ميوت لشخص
 ⚙ r.umute ----- ⚙ فك ميوت من الشخص
 ⚙ r.setwelcome ----- ⚙ لترحيب بصوره الامو واختار الروم 
-⚙ r.invites ----- ⚙ كم جبت اعضاء للسيرفر 
+⚙ r.daily ----- ⚙ لأخذ راتب يومي
 ⚙ r.credit ----- ⚙ التحويل ومعرفة الرصيد
 `);
 }
@@ -553,35 +553,7 @@ client.on('message', message => {
 });
 ///////////////////////////////
 
-            if(!message.channel.guild) return;
-            var prefix = "r.";
-        if(message.content.startsWith(prefix + 'invites')) {
-        var nul = 0
-        var guild = message.guild
-       
-            .then(invites => {
-             invites.forEach(invite => {
-                if (invite.inviter === message.author) {
-                     nul+=invite.uses
-                    }
-                });
-            });
-          if (nul > 0) {
-              console.log(`\n${message.author.tag} has ${nul} invites in ${guild.name}\n`)
-              var embed = new Discord.RichEmbed()
-                  .setColor("#000000")
-                    .addField(`${message.author.username}`, `لقد قمت بدعوة **${nul}** شخص`)
-                          message.channel.send({ embed: embed });
-                      return;
-                    } else {
-                       var embed = new Discord.RichEmbed()
-                        .setColor("#000000")
-                        .addField(`${message.author.username}`, `لم تقم بدعوة أي شخص لهذة السيرفر`)
-
-                       message.channel.send({ embed: embed });
-                        return;
-                    }
-        } 
+        
  
 client.on('message', message => {
   if(message.channel.type === 'dm') return;
