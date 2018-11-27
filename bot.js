@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = 'r.'; 
 const premium = ['399353508429824000']
+const sWlc = {}
 //////////////////////////////////////
 client.on('ready', () => {
    console.log(`~~~~~~~~~~~~~~~~~`);
@@ -56,15 +57,16 @@ client.on("message", message => {
 ////////////////////////////////////
 
 
-client.on('message', message => {
 
+client.on('message', message => {
+var prefix = "r.";
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
-  Swlc(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
-    channel: "welcome"
+  if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
+    channel: "chat"
 }
-const schannel = sWlc[message.guild.id].channel
-  if (message.content.startsWith(prefix + "r.setwelcome")) {
+const channel = sWlc[message.guild.id].channel
+  if (message.content.startsWith(prefix + "setwelcome")) {
     if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
     let newChannel = message.content.split(' ').slice(1).join(" ")
     if(!newChannel) return message.reply(`**$setwelcome رجاء كتابت اسم الروم**`)
@@ -73,11 +75,13 @@ const schannel = sWlc[message.guild.id].channel
   }
 });
  
- client.on("guildMemberAdd", member => {
+
+
+client.on("guildMemberAdd", member => {
       if(!sWlc[member.guild.id]) sWlc[member.guild.id] = {
-    channel: "welcome"
+    channel: "chat"
   }
-  const schannel = sWlc[member.guild.id].channel
+  const channel = sWlc[member.guild.id].channel
     const sChannel = sWlc[member.guild.id].channel
     let welcomer = member.guild.channels.find('name', sChannel);
     let memberavatar = member.user.avatarURL
@@ -96,7 +100,7 @@ const schannel = sWlc[message.guild.id].channel
       var Canvas = require('canvas')
       var jimp = require('jimp')
       
-      const w = ['w1.png'];
+      const w = ['Power.png'];
       
               let Image = Canvas.Image,
                   canvas = new Canvas(557, 241),
@@ -126,7 +130,7 @@ const schannel = sWlc[message.guild.id].channel
                               ctx.font = '30px Arial';
                               ctx.fontSize = '28px';
                               ctx.fillStyle = "#FFFFFF";
-      ctx.fillText(`Welcome To ${member.guild.name}`, 245, 80);
+      ctx.fillText(``, 245, 80);
       
                               //AVATARً
                               let Avatar = Canvas.Image;
@@ -137,9 +141,11 @@ const schannel = sWlc[message.guild.id].channel
                    ctx.closePath();
                    
                                  ctx.clip();
-                         ctx.drawImage(ava, 7, 8, 227, 225);
+
+                        ctx.drawImage(ava, 7, 8, 227, 225);
                               ctx.closePath();
-                             
+
+                            
     welcomer.sendFile(canvas.toBuffer())
       
       
@@ -149,6 +155,7 @@ const schannel = sWlc[message.guild.id].channel
       
       }
       });
+
 ////////////////////////////////////
 client.on('message', message => {
   if (message.author.codes) return;
