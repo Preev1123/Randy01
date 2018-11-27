@@ -63,7 +63,7 @@ if(message.author.bot) return;
   if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
     channel: "welcome"
 }
-const channel = sWlc[message.guild.id].channel
+const schannel = sWlc[message.guild.id].channel
   if (message.content.startsWith(prefix + "setwelcome")) {
     if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
     let newChannel = message.content.split(' ').slice(1).join(" ")
@@ -77,7 +77,7 @@ const channel = sWlc[message.guild.id].channel
       if(!sWlc[member.guild.id]) sWlc[member.guild.id] = {
     channel: "welcome"
   }
-  const channel = sWlc[member.guild.id].channel
+  const schannel = sWlc[member.guild.id].channel
     const sChannel = sWlc[member.guild.id].channel
     let welcomer = member.guild.channels.find('name', sChannel);
     let memberavatar = member.user.avatarURL
