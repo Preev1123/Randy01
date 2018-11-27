@@ -25,7 +25,7 @@ client.on('message', message => {
 });
 /////////////////////////////////////
  client.on("message", (message) => {
-if (message.content.split(' ')[0] == 'bc')
+if (message.content.split(' ')[0] == 'r.bc')
  message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
@@ -64,7 +64,7 @@ if(message.author.bot) return;
     channel: "welcome"
 }
 const schannel = sWlc[message.guild.id].channel
-  if (message.content.startsWith(prefix + "setwelcome")) {
+  if (message.content.startsWith(prefix + "r.setwelcome")) {
     if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
     let newChannel = message.content.split(' ').slice(1).join(" ")
     if(!newChannel) return message.reply(`**$setwelcome رجاء كتابت اسم الروم**`)
@@ -159,7 +159,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "ban") {
+  if (command == "r.ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
@@ -188,7 +188,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "kick") {
+  if (command == "r.kick") {
                if(!message.channel.guild) return;
          
   if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
@@ -215,7 +215,7 @@ client.on('message', message => {
 });
 ////////////////////////////////////
 client.on('message', function(message) {
-    if (message.content == "clear") {
+    if (message.content == "r.clear") {
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
             message.channel.fetchMessages()
                .then(function(list){
@@ -227,9 +227,13 @@ client.on('message', function(message) {
 });
 
 ////////////////////////////////////
-client.on('message', message => {
-     if (message.content === "r.help") {
-message.author.send(`  **
+client.on('message' , message => {
+if(message.content === 'r.help') {
+  var EsTeKnAN = new Discord.RichEmbed()
+  .setColor('RANDOM')
+message.author.send(`
+**
+
 __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
 ⚙ r.obc ----- ⚙نشر برودكاست لجميع الاعضاء ⚙ 
 ⚙ r.uptime ----- ⚙ معرفة كم البوت شغال ⚙
@@ -238,14 +242,16 @@ __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
 ⚙ r.kick ----- ⚙ طرد عضو ⚙
 ⚙ r.clear ----- ⚙ مسح الشات ⚙
 
-**`);
+`);
+}
+})
 
     }
 });
 ////////////////////////////////////
 client.on('message', message => {
      var prefix = "-"
-if (message.content.startsWith(prefix + "uptime")) {
+if (message.content.startsWith(prefix + "r.uptime")) {
     let uptime = client.uptime;
  
     let days = 0;
