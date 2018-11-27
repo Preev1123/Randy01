@@ -54,25 +54,7 @@ Client.on("message", message => {
                           }
 });
 ////////////////////////////////////
-client.on('message',async message => {
-    if(message.content.startsWith(prefix + "restart")) {
-        if(message.author.id !== "399353508429824000") return message.reply('You arent the bot owner.');
-        message.channel.send('Restarting.').then(msg => {
-            setTimeout(() => {
-               msg.edit('Restarting..');
-            },1000);
-            setTimeout(() => {
-               msg.edit('Restarting...');
-            },2000);
-        });
-       
-        console.log(Restarting..);
-        setTimeout(() => {
-            client.destroy();
-            client.login('process.env.BOT_TOKEN');
-        },3000);
-    }
-});
+
 client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
@@ -283,7 +265,6 @@ client.on('message', message => {
 message.author.send(`  **
 __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
 ⚙ r.obc ----- ⚙نشر برودكاست لجميع الاعضاء ⚙ 
-⚙ r.restart ----- ⚙ اعادة تشغيل البوت ⚙
 ⚙ r.uptime ----- ⚙ معرفة كم البوت شغال ⚙
 ⚙ r.ban ----- ⚙ حظر عضو ⚙
 ⚙ r.ban ----- ⚙ حظر عضو ⚙
