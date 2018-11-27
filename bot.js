@@ -57,10 +57,10 @@ client.on("message", message => {
 
 
 client.on('message', message => {
-var prefix = "#";
+
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
-  if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
+  Swlc(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
     channel: "welcome"
 }
 const schannel = sWlc[message.guild.id].channel
