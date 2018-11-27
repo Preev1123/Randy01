@@ -558,7 +558,7 @@ client.on("message", message => {
         if(message.content.startsWith(prefix + 'invites')) {
         var nul = 0
         var guild = message.guild
-        await guild.fetchInvites()
+       
             .then(invites => {
              invites.forEach(invite => {
                 if (invite.inviter === message.author) {
