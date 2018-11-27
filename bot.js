@@ -69,7 +69,7 @@ const channel = sWlc[message.guild.id].channel
   if (message.content.startsWith(prefix + "setwelcome")) {
     if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
     let newChannel = message.content.split(' ').slice(1).join(" ")
-    if(!newChannel) return message.reply(`**$setwelcome رجاء كتابت اسم الروم**`)
+    if(!newChannel) return message.reply(`**setwelcome رجاء كتابت اسم الروم**`)
     sWlc[message.guild.id].channel = newChannel
     message.channel.send(`**${newChannel} تم عمل الترحيب في روم ${message.guild.name}**`);
   }
@@ -255,7 +255,7 @@ __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
 });
 ////////////////////////////////////
 client.on('message', message => {
-     var prefix = "-"
+     
 if (message.content.startsWith(prefix + "r.uptime")) {
     let uptime = client.uptime;
  
