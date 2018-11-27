@@ -24,7 +24,7 @@ client.on('message', message => {
 }
 });
 /////////////////////////////////////
-client.on('message', message => {
+Client.on("message", message => {
 if (message.content.split(' ')[0] == 'obc')
  message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
