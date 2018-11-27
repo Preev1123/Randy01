@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const prefix = '#'; 
+const prefix = 'r.'; 
 const premium = ['399353508429824000']
 //////////////////////////////////////
 client.on('ready', () => {
@@ -10,7 +10,7 @@ client.on('ready', () => {
    console.log(`on  ${client.guilds.size} Servers `);
    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~`);
    console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setGame(`#help | #inv`,"http://twitch.tv/y04zgamer")
+   client.user.setGame(`r.help | #inv`,"http://twitch.tv/y04zgamer")
    client.user.setStatus("dnd")
 });
 /////////////////////////////////////
@@ -65,7 +65,7 @@ client.on('message',async message => {
                msg.edit('Restarting...');
             },2000);
         });
-        console.log(${message.author.tag} [ ${message.author.id} ] has restarted the bot.);
+       
         console.log(Restarting..);
         setTimeout(() => {
             client.destroy();
@@ -202,13 +202,96 @@ const channel = sWlc[message.guild.id].channel
       });
 ////////////////////////////////////
 client.on('message', message => {
-     if (message.content === "-help") {
+  if (message.author.codes) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "ban") {
+               if(!message.channel.guild) return message.reply('** This command only for servers**');
+         
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+  let user = message.mentions.users.first();
+  
+  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
+  if (!message.guild.member(user)
+  .bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
+
+
+  message.guild.member(user).ban(7, user);
+
+message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! :airplane: **  `)
+
+}
+});
+////////////////////////////////////
+client.on('message', message => {
+
+  if (message.author.kick) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "kick") {
+               if(!message.channel.guild) return;
+         
+  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
+  let user = message.mentions.users.first();
+  let reason = message.content.split(" ").slice(2).join(" ");
+
+  if (message.mentions.users.size < 1) return message.reply("منشن شخص");
+  if(!reason) return message.reply ("اكتب سبب الطرد");
+  if (!message.guild.member(user)
+  .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
+
+  message.guild.member(user).kick(7, user);
+
+  const banembed = new Discord.RichEmbed()
+  .setAuthor('Kicked !', user.displayAvatarURL)
+  .setColor("RANDOM")
+  .setTimestamp()
+  .addField("User:",  `[ + ${user.tag} + ]`)
+  .addField("By:", `[  + ${message.author.tag} +  ]`)
+  .addField("Reason:", `[ + ${reason} +  ]`)
+  client.channels.get("492086928397565952").send({embed : banembed})
+}
+});
+////////////////////////////////////
+client.on('message', function(message) {
+    if (message.content == "clear") {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+        }
+    }
+
+});
+
+////////////////////////////////////
+client.on('message', message => {
+     if (message.content === "r.help") {
 message.author.send(`  **
 __ ● ▬▬▬▬▬▬▬▬▬#Randy#▬▬▬▬▬▬▬▬▬ ● __
-⚙ #obc ----- ⚙نشر برودكاست لجميع الاعضاء ⚙ 
-⚙ #restart ----- ⚙ اعادة تشغيل البوت ⚙
-⚙ #uptime ----- ⚙ معرفة كم البوت شغال ⚙
+⚙ r.obc ----- ⚙نشر برودكاست لجميع الاعضاء ⚙ 
+⚙ r.restart ----- ⚙ اعادة تشغيل البوت ⚙
+⚙ r.uptime ----- ⚙ معرفة كم البوت شغال ⚙
+⚙ r.ban ----- ⚙ حظر عضو ⚙
+⚙ r.ban ----- ⚙ حظر عضو ⚙
+⚙ r.kick ----- ⚙ طرد عضو ⚙
+⚙ r.clear ----- ⚙ مسح الشات ⚙
+
 **`);
+
     }
 });
 ////////////////////////////////////
