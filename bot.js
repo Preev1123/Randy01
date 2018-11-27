@@ -55,40 +55,7 @@ Client.on("message", message => {
 });
 ////////////////////////////////////
 
-client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  var args = message.content.split(' ').slice(1);
-  var argresult = args.join(' ');
-  if (message.author.id !== '399353508429824000') return;
 
-if (message.content.startsWith(prefix + 'gm')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(**✅  : ${argresult}**)
-} else 
-
-if (message.content.startsWith(prefix + 'wt')) {
-client.user.setActivity(argresult, {type:'WATCHING'});
-    message.channel.sendMessage(**✅  : ${argresult}**)
-} else 
-if (message.content.startsWith(prefix + 'ls')) {
-client.user.setActivity(argresult, {type:'LISTENING'});
-    message.channel.sendMessage(**✅  : ${argresult}**)
-} else 
-
-if (message.content.startsWith(prefix + 'tw')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/Justin-Ly0001");
-    message.channel.sendMessage(**✅  : ${argresult}**)
-}
-  if (message.content.startsWith(adminprefix + 'nm')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(Changing The Name To ..**${argresult}**)
-} else
-if (message.content.startsWith(adminprefix + 'av')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(Changing The Avatar To :**${argresult}**);
-  }
-});
-////////////////////////////////////
 client.on('message', message => {
 var prefix = "#";
 if(message.channel.type === "dm") return;
