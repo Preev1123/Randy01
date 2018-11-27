@@ -583,8 +583,7 @@ client.on("message", async message => {
                     }
         } 
  
-client.on('message',async message => {
-  if(message.author.bot) return;
+client.on('message', message => {
   if(message.channel.type === 'dm') return;
  
   const args = message.content.split(' ');
