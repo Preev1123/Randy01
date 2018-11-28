@@ -258,6 +258,7 @@ if (message.content.startsWith(prefix + 's')) {
 client.user.setUsername(argresult).then
        message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
 } else
+}
 });
 client.on("message", message => {
     if (message.content === `${prefix}help`) {
