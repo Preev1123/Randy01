@@ -38,6 +38,31 @@ const queue = new Map();
  
  
 var prefix = "#" 
+////////////////////////////////////////
+const devs = ['399353508429824000' , '' , '' , ''];
+const adminprefix = "#";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!devs.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'sp')) {
+    client.user.setGame(argresult);
+      message.channel.sendMessage(`**âœ…   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'sw')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.sendMessage(`**âœ…   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'sl')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.sendMessage(`**âœ…   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/ط­ط¨ ط¨ظ„ط§ ط­ط¯ظˆط¯");
+      message.channel.sendMessage(`**âœ…   ${argresult}**`)
+  }
+  });
+///////////////////////////////////////////////////////////
 client.on('message', async msg => {
     if (msg.author.bot) return undefined;
    
