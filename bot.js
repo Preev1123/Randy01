@@ -1,8 +1,10 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "js")) {
   if(!message.channel.guild) return message.reply('This Command For Servers Only !');
-  let staff = message.guild.member(message.author).roles.find('name' , 'Support');
-  if(!staff) return message.reply('**- You Dont Have Support Role**');
+  let staff = message.guild.member(message.author).roles.find('name' , 'Codes Support');
+  if(!staff) return message.reply('**- You Dont Have Codes Support Role**');
       let jscodes = message.guild.channels.find(`name`, "codes-js");
     if(!jscodes) return message.channel.send(":x:لم اجد الروم الخاص بنشر الاكواد");
       let filter = m => m.author.id === message.author.id;
@@ -76,3 +78,4 @@ ${thisMessage}\`\`\`
 }
 );
       })}});
+client.login("proccess.env.TOKEN");
